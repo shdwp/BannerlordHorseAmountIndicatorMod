@@ -1,0 +1,20 @@
+ <Module>
+     <Name value="HorseAmountIndicatorMod"/>
+     <Id value="HorseAmountIndicatorMod"/>
+     <Version value="v1.0.0"/>
+     <SingleplayerModule value="true"/>
+     <MultiplayerModule value="false"/>
+     <DependedModules/>
+     <SubModules>
+         <SubModule>
+             <Name value="HorseAmountIndicatorMod"/>
+             <DLLName value="HorseAmountIndicator.dll"/>
+             <SubModuleClassType value="HorseAmountIndicator.HorseAmountIndicatorMod"/>
+             <Tags>
+                 <Tag key="DedicatedServerType" value="none" />
+                 <Tag key="IsNoRenderModeElement" value="false" />
+             </Tags>
+         </SubModule>
+     </SubModules>
+     <Xmls/>
+ </Module>
