@@ -1,0 +1,10 @@
+<HintWidget Id="PartyHorsesLabel" DataSource="{HorsesAmountHint}" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedHeight="40" SuggestedWidth="70" MarginLeft="15" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint">
+  <Children>
+    <ListPanel WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedHeight="40" SuggestedWidth="70" IsEnabled="false">
+      <Children>
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="33" SuggestedHeight="33" VerticalAlignment="Center" Sprite="Icons\Speed@2x" />
+        <MapBarTextWidget DataSource="{..}" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="40" SuggestedHeight="40" VerticalAlignment="Center" PositionYOffset="2" MarginLeft="2" Brush="MapTextBrushWithAnim" Text="@HorsesAmount" />
+      </Children>
+    </ListPanel>
+  </Children>
+</HintWidget>
