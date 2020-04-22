@@ -6,8 +6,7 @@ using TaleWorlds.Core.ViewModelCollection;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using UIExtenderLib;
-using UIExtenderLib.Prefab;
-using UIExtenderLib.ViewModel;
+using UIExtenderLib.Interface;
 
 namespace HorseAmountIndicator
 {
@@ -31,7 +30,7 @@ namespace HorseAmountIndicator
         {
         }
         
-        public override void Refresh()
+        public override void OnRefresh()
         {
             var horses = MobileParty.MainParty.ItemRoster.Where(i => i.EquipmentElement.Item.ItemCategory.Id == new MBGUID(671088673));
             var newTooltip = horses.Aggregate("Horses: ", (s, element) => $"{s}\n{element.EquipmentElement.Item.Name}: {element.Amount}");
@@ -41,18 +40,30 @@ namespace HorseAmountIndicator
                 _horsesAmount = horses.Sum(item => item.Amount);
                 _horsesTooltip = newTooltip;
 
-                _vm.OnPropertyChanged(nameof(HorsesAmount));
+                if (_vm.TryGetTarget(out var vm))
+                {
+                    vm.OnPropertyChanged(nameof(HorsesAmount));
+                }
             }
         }
     }
     
     public class HorseAmountIndicatorMod : MBSubModuleBase
     {
+        private UIExtender _extender;
         protected override void OnSubModuleLoad()
         {
             base.OnSubModuleLoad();
             
-            UIExtender.Register();
+            _extender = new UIExtender("HorseAmountIndicatorMod");
+            _extender.Register();
+        }
+
+        protected override void OnBeforeInitialModuleScreenSetAsRoot()
+        {
+            base.OnBeforeInitialModuleScreenSetAsRoot();
+
+            _extender.Verify();
         }
     }
 }
